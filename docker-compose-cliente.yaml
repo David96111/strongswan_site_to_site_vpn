@@ -1,0 +1,36 @@
+version: "2"
+services: 
+  client:
+    image: strong_vpn
+    privileged: true
+    working_dir: "/root"
+    command: bash
+    cap_add:
+        - NET_ADMIN
+    extra_hosts:
+        - "host.docker.internal:host-gateway"
+    stdin_open: true
+    tty: true
+    ports:
+      - "500:500/udp" 
+      - "4500:4500/udp" 
+    restart: "always"
+    volumes:
+        - "./scripts:/root/scripts"
+        - "./config-client/ipsec.conf:/etc/ipsec.conf:ro"
+        - "./config-client/ipsec.secrets:/etc/ipsec.secrets:ro"
+    networks:
+      subnet:
+        ipv4_address: 10.250.239.10
+
+networks:
+    subnet:
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.250.239.8/29 
+
+
+
+
+
