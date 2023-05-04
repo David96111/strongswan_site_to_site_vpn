@@ -4,7 +4,7 @@ on_premise_ip: Ip publica de la red local.
 vpn_server_ip: Ip publica de la vpn.
 
 Notas: 
- - El on_premise_subnet no debe traslaparce con las ips de la red remota que ust quiere alcanzar.
+ - El on_premise_subnet no se debe traslapa con las ips de la red remota que ust quiere alcanzar.
 
 # Setup Server
 
